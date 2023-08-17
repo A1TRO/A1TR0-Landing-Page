@@ -246,22 +246,38 @@
         const description = repo.description ? `<p>${repo.description}</p>` : '<p>No description available.</p>';
         const stargazersCount = await fetchStargazersCount(repo);
         const license = await fetchLicenseInfo(repo);
-        repoCard.innerHTML = `
-          <div class="box">
-            <h4 class="title is-5">${repo.name}</h4>
-            ${description}
-            <p><strong>Stars:</strong> ${stargazersCount}</p>
-            <p><strong>Forks:</strong> ${repo.forks_count}</p>
-            <p><strong>Views:</strong> ${repo.watchers_count}</p>
-            <p><strong>License:</strong> ${license}</p>
-            <a href="${repo.html_url}" target="_blank" class="button is-link is-small">View on GitHub</a>
-            <a href="${repo.forks_url}" target="_blank" class="button is-link is-small">Forks</a>
-            <a href="${repo.collaborators_url}" target="_blank" class="button is-link is-small">Collaborators</a>
-            <a href="${repo.issue_events_url}" target="_blank" class="button is-link is-small">Issues</a>
-          </div>
-        `;
+        const createdAt = new Date(repo.created_at).toLocaleDateString();
+    const updatedAt = new Date(repo.updated_at).toLocaleDateString();
+    const pushedAt = new Date(repo.pushed_at).toLocaleDateString();
+    repoCard.innerHTML = `
+      <div class="box">
+        <h4 class="title is-5">${repo.name}</h4>
+        ${description}
+        <p><strong>Stars:</strong> ${stargazersCount}</p>
+        <p><strong>Forks:</strong> ${repo.forks_count}</p>
+        <p><strong>Views:</strong> ${repo.watchers_count}</p>
+        <p><strong>License:</strong> ${license}</p>
+        <p><strong>Created At:</strong> ${createdAt}</p>
+        <p><strong>Updated At:</strong> ${updatedAt}</p>
+        <p><strong>Pushed At:</strong> ${pushedAt}</p>
+        <a href="${repo.html_url}" target="_blank" class="button is-link is-small">View on GitHub</a>
+        <a href="${repo.forks_url}" target="_blank" class="button is-link is-small">Forks</a>
+        <a href="${repo.collaborators_url}" target="_blank" class="button is-link is-small">Collaborators</a>
+        <a href="${repo.issue_events_url}" target="_blank" class="button is-link is-small">Issues</a>
+      </div>
+    `;
+
+    
 
         projectsContainer.appendChild(repoCard);
+          // Animate the card's opacity
+    anime({
+      targets: repoCard,
+      opacity: [0, 1],
+      delay: 1000, // Delay each animation to create a staggered effect
+      easing: 'easeInOutQuad', // You can adjust the easing function
+      duration: 800, // Animation duration in milliseconds
+    });
       });
     };
 
