@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -90,7 +90,7 @@
   <body>
     <section class="hero">
       <div class="hero-body">
-        <img class="avatar" src="./assets/images/avatar.png" alt="Avatar" />
+        <img class="avatar" src="https://raw.githubusercontent.com/A1TRO/A1TR0-Landing-Page/main/public/assets/images/avatar.png" alt="Avatar" />
         <h1 class="title">Hey, I'm Hosie</h1>
         <p class="subtitle">
           Passionate Software Engineer Exploring Boundaries
